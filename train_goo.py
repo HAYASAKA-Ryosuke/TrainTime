@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
-
+# vim: fileencoding=utf-8
 from BeautifulSoup import BeautifulSoup
 import mechanize
 import datetime
@@ -9,7 +9,8 @@ import time
 import codecs
 import urllib2
 import datetime
-
+import os
+import sys
 #朝・昼なら琴似->手稲，夜なら手稲->琴似
 def Station_judge(morningtime=datetime.time(15,0,0),deepnighttime=datetime.time(4,0,0)):
           now=datetime.datetime.now()                                            
@@ -38,5 +39,9 @@ def Next_train():
         return ["手->琴",soup('strong')[0].renderContents(),soup('strong')[1].renderContents()]
     else:
         return ["琴->手",soup('strong')[0].renderContents(),soup('strong')[1].renderContents()]
+
 result= Next_train()
-print result[0]+" "+result[1]+" "+result[2]
+f=codecs.open('traininfo.cache','w','utf-8')
+f.write(unicode(result[0],'utf-8')+" "+unicode(result[1],'utf-8')+unicode(result[2],'utf-8'))
+f.close()
+os.system("cat traininfo.cache")
