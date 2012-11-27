@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from BeautifulSoup import BeautifulSoup
+from selenium import webdriver
 import mechanize
 import urllib2
 import sys
@@ -29,17 +30,16 @@ br["S_EKI_IN"]="kotoni"
 #br.select_form(name="E_EKI_IN")
 br["E_EKI_IN"]="teine"
 resp=br.submit()
+br.submit(name='keiro')
 #br.select_form(name="keiro")
 #br.select_form(nr=0)
 #resp=br.form.click(name='keiro',nr=0)
-br.form_click(name='keiro')
+#resp=br.click(name='keiro')
 #resp=br.form.action='keiro_search();'
 #resp=br.form.submit(name="keiro_search();",nr=0)
 #resp=br.submit()
 #br.open(req)
 #resp=br.open(URL2)
-br.select_form(nr=0)
-print br.form
 #print Terminal_judge(datetime.time(15,0,0),datetime.time(4,0,0))
 
 #soup.findAll('td',)
